@@ -6,7 +6,7 @@ const URLHelper = require('./helpers/url');
 const ContentHelper = require('./helpers/content');
 const Image = require('./helpers/image');
 
-class SimpleTicketsForm {
+class SimpleSchoolTicketsForm {
     constructor(API, name, config) {
         this.API = API;
         this.name = name;
@@ -22,7 +22,7 @@ class SimpleTicketsForm {
     modifyMenuStructure(rendererInstance, output) {
         this.rendererInstance = rendererInstance;
 
-        const translations = this.rendererInstance.translations.user.tickets ?? this.rendererInstance.translations.theme.tickets;
+        const translations = this.rendererInstance.translations.user.school_tickets ?? this.rendererInstance.translations.theme.school_tickets;
 
         let menu = this.config['menu'].split('/').map(menuItem => menuItem.trim());
         const mainMenu = menu.shift();
@@ -81,7 +81,7 @@ class SimpleTicketsForm {
             return output;
         }
 
-        const translations = this.rendererInstance.translations.user.tickets ?? this.rendererInstance.translations.theme.tickets;
+        const translations = this.rendererInstance.translations.user.school_tickets ?? this.rendererInstance.translations.theme.school_tickets;
 
         let menu = this.config['menu'].split('/').map(menuItem => menuItem.trim());
         menu.shift();
@@ -89,7 +89,7 @@ class SimpleTicketsForm {
         // Load template
         let suffix = '.html';
         let pageSlug = [menu.join('/'), translations.menu.slug].join('/');
-        let inputFile = 'tickets.hbs';
+        let inputFile = 'school_tickets.hbs';
         let compiledTemplate = this.rendererInstance.compileTemplate(inputFile);
 
         if (globalContext.config.site.urls.cleanUrls) {
@@ -97,13 +97,13 @@ class SimpleTicketsForm {
         }
 
         const oldMenuContext = this.rendererInstance.menuContext
-        this.rendererInstance.menuContext = ['tickets'];
+        this.rendererInstance.menuContext = ['school_tickets'];
 
-        globalContext.context = ['tickets'];
+        globalContext.context = ['school_tickets'];
         globalContext.plugins[this.name].config.recaptcha = this.config.recaptchaEnabled && this.config.recaptchaSiteKey && !this.rendererInstance.previewMode;
 
         context.title = `${globalContext.website.name} - ${translations.menu.label}`;
-        context.tickets = {
+        context.school_tickets = {
             title: `${translations.menu.label}`,
             featuredImage: false,
             text: globalContext.plugins[this.name].config.ticketsContent,
@@ -119,7 +119,7 @@ class SimpleTicketsForm {
                 alt: `${translations.menu.label}`,
             };
 
-            context.tickets.featuredImage = this.getFeaturedImages(imageUrl, imageData);
+            context.school_tickets.featuredImage = this.getFeaturedImages(imageUrl, imageData);
         }
 
         let content = this.rendererInstance.renderTemplate(compiledTemplate, context, globalContext, inputFile);
@@ -136,11 +136,11 @@ class SimpleTicketsForm {
         let menu = this.config['menu'].split('/').map(menuItem => menuItem.trim());
         menu.shift(); // Remove main menu item
 
-        const translations = this.rendererInstance.translations.user.tickets ?? this.rendererInstance.translations.theme.tickets;
+        const translations = this.rendererInstance.translations.user.school_tickets ?? this.rendererInstance.translations.theme.school_tickets;
 
         let ticketsSlug = [menu.join('/'), translations.menu.slug].join('/');
 
-        let url = '#INTERNAL_LINK#/tickets';
+        let url = '#INTERNAL_LINK#/school_tickets';
         let link = this.rendererInstance.siteConfig.domain + '/' + ticketsSlug;
 
         if (this.rendererInstance.previewMode || this.rendererInstance.siteConfig.advanced.urls.addIndex) {
@@ -188,7 +188,7 @@ class SimpleTicketsForm {
                 try {
                     imageDimensions = sizeOf(imagePath);
                 } catch(e) {
-                    console.log('simple-tickets-form.js: wrong image path - missing dimensions');
+                    console.log('simple-school-tickets-form.js: wrong image path - missing dimensions');
                     imageDimensions = false;
                 }
             } else {
@@ -285,4 +285,4 @@ class SimpleTicketsForm {
     }
 }
 
-module.exports = SimpleTicketsForm;
+module.exports = SimpleSchoolTicketsForm;

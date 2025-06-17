@@ -1,9 +1,9 @@
 {
-  "name": "simple-tickets-form",
-  "description": "Simple tickets form for Publii",
-  "version": "1.0.2",
+  "name": "simple-school-tickets-form",
+  "description": "Simple school tickets form for Publii",
+  "version": "1.0.0",
   "license": "MIT",
-  "homepage": "https://github.com/svdm1950/simple-tickets-form",
+  "homepage": "https://github.com/svdm1950/simple-school-tickets-form",
   "authors": [
     "Valgard Trontheim <https://trontheim.com/>"
   ],

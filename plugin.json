@@ -1,9 +1,9 @@
 {
-  "name": "Simple Tickets Form",
-  "description": "Simple Tickets Form",
+  "name": "Simple School Tickets Form",
+  "description": "Simple School Tickets Form",
   "license": "MIT",
   "author": "Valgard Trontheim <https://trontheim.com/>",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "scope": "site",
   "minimumPubliiVersion": "0.46.0",
   "useCustomCssForOptions": false,
@@ -14,7 +14,7 @@
       "note": "",
       "group": "Backend",
       "type": "text",
-      "default": "https://example.com/tickets"
+      "default": "https://example.com/school_tickets"
     },
     {
       "name": "script_events",
@@ -22,15 +22,15 @@
       "note": "",
       "group": "Backend",
       "type": "text",
-      "default": "https://example.com//tickets/events"
+      "default": "https://example.com//school_tickets/events"
     },
     {
       "name": "script_tickets",
-      "label": "URL endpoint to get tickets",
+      "label": "URL endpoint to get school_tickets",
       "note": "",
       "group": "Backend",
       "type": "text",
-      "default": "https://example.com/tickets/tickets"
+      "default": "https://example.com/school_tickets/school_tickets"
     },
     {
       "name": "menu",
